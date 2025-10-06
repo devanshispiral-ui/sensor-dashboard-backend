@@ -1,0 +1,6 @@
+@RealTimeSimulation_HostAddress = http://localhost:5022
+
+GET {{RealTimeSimulation_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
