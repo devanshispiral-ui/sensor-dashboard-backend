@@ -1,68 +1,9 @@
-//// In Program.cs
-
-//using RealTimeAnalytics.Api.Hubs;
-//using RealTimeAnalytics.Api.Services;
-
-//var builder = WebApplication.CreateBuilder(args);
-
-//// --- 1. Configure Services ---
-
-//// Add CORS policy to allow your frontend to connect
-//builder.Services.AddCors(options =>
-//{
-//    options.AddPolicy("AllowSpecificOrigin",
-//        policy =>
-//        {
-//            policy.WithOrigins("http://localhost:4200", "http://localhost:3000") // Common ports for Angular and React
-//                  .AllowAnyHeader()
-//                  .AllowAnyMethod()
-//                  .AllowCredentials(); // Required for SignalR
-//        });
-//});
-
-//// Add services for SignalR
-//builder.Services.AddSignalR();
-
-//// Register the new data generator as a background service
-//builder.Services.AddHostedService<SensorDataSimulator>();
-
-//// We add controllers in case you want to add other API endpoints later
-//builder.Services.AddControllers();
-//builder.Services.AddEndpointsApiExplorer();
-//builder.Services.AddSwaggerGen();
-
-
-//// --- 2. Configure HTTP Request Pipeline ---
-//var app = builder.Build();
-
-//if (app.Environment.IsDevelopment())
-//{
-//    app.UseSwagger();
-//    app.UseSwaggerUI();
-//}
-
-//app.UseHttpsRedirection();
-//app.UseRouting();
-
-//// Apply the CORS policy
-//app.UseCors("AllowSpecificOrigin");
-
-//app.UseAuthorization();
-
-//// Map the API controllers and the SignalR hub
-//app.MapControllers();
-//app.MapHub<SensorHub>("/sensorhub"); // Your frontend will connect to this endpoint
-
-
-//// --- 3. Run Application ---
-//app.Run();
-
 // =================================================================================
 // Using Directives: Import necessary namespaces
 // =================================================================================
 using RealTimeAnalytics.Api.Hubs;
 using RealTimeAnalytics.Api.Services;
-using Microsoft.AspNetCore.OpenApi; 
+using Microsoft.AspNetCore.OpenApi;
 
 // =================================================================================
 // Application Builder: Configure services for the application
@@ -118,7 +59,7 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI(); // Enables the interactive API docs at /swagger
 }
 
-//app.UseHttpsRedirection(); // Redirect HTTP requests to HTTPS.
+app.UseHttpsRedirection(); // Redirect HTTP requests to HTTPS.
 
 app.UseRouting(); // Enables routing to match incoming requests to endpoints.
 
@@ -141,3 +82,5 @@ app.MapGet("/status", () => new { Status = "Backend is running!", Timestamp = Da
 // Run Application
 // =================================================================================
 app.Run();
+
+
